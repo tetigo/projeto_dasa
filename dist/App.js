@@ -25,8 +25,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("./infra/db"));
-const auth_1 = __importDefault(require("./infra/auth"));
-const uploads_1 = __importDefault(require("./infra/uploads"));
 const router_1 = __importDefault(require("./router"));
 class App {
     constructor() {
@@ -52,16 +50,8 @@ class App {
         this.app.route('/').get((req, res) => {
             res.json({ versao: '0.0.1' });
         });
-        this.app.route('/uploads').post(uploads_1.default.single('file_patati'), (req, res) => {
-            try {
-                res.json(req.file);
-            }
-            catch (error) {
-                console.log(error);
-            }
-        });
         //JWT
-        this.app.use(auth_1.default.validate);
+        // this.app.use(Auth.validate)
         //newsController
         this.app.use('/api/v1', router_1.default);
     }

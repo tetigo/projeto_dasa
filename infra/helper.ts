@@ -1,9 +1,10 @@
 import { HttpStatus } from "http-status";
-import { INewsSchema } from "../models/newsSchema";
+import { IExamsSchema } from "../models/examsSchema";
+import { ILabsSchema } from "../models/labsSchema";
 import { Response } from 'express';
 
 class Helper {
-    sendResponse = (res: Response, statusCode: number, data: INewsSchema[] | INewsSchema | string | null) => {
+    sendResponse = (res: Response, statusCode: number, data: any) => {
         res.status(statusCode).json({ result: data })
     }
 }

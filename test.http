@@ -1,35 +1,41 @@
 
-GET http://localhost:3050/ HTTP/1.1
+GET http://localhost:3000/ HTTP/1.1
 
 ###
 
-POST http://localhost:3050/uploads
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary123
-
-------WebKitFormBoundary123
-Content-Disposition: form-data; name="text"
-
-Text sent by multipart/form-data. Thats OK!!! It's Running...
-------WebKitFormBoundary123
-Content-Disposition: form-data; name="file_patati"; filename="Homer-simpson.jpg"
-Content-Type: image/jpeg
-
-< C:/Users/Tiago/Downloads/Homer-simpson.jpg
-------WebKitFormBoundary123--
-
-###
-
-GET http://localhost:3050/api/v1/news HTTP/1.1
+GET http://localhost:3000/api/v1/exams HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnb29nbGUuY29tIiwiaWF0IjoxMiwiZXhwIjoxNjA5MjcyMzEyNTIyLCJ1c2VybmFtZSI6IlRpYWdvTWVuZGVzIiwiZW1haWwiOiJ0ZXRpZ29AZ21haWwuY29tIn0.8SqhyO26FWnLvvwj-9Qv_GcnqEW_EzOuYo4iTe4tsP8
 
 ###
 
-GET http://localhost:3050/api/v1/news/5fecf511fc789036c457d8d9
+GET http://localhost:3000/api/v1/exams/60042036dc80572b08b53ef4
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnb29nbGUuY29tIiwiaWF0IjoxMiwiZXhwIjoxNjA5MjcyMzEyNTIyLCJ1c2VybmFtZSI6IlRpYWdvTWVuZGVzIiwiZW1haWwiOiJ0ZXRpZ29AZ21haWwuY29tIn0.8SqhyO26FWnLvvwj-9Qv_GcnqEW_EzOuYo4iTe4tsP8
 
 ###
 
-PUT http://localhost:3050/api/v1/news/5fecf511fc789036c457d8d9
+GET http://localhost:3000/api/v1/exams/labs/ultrassom HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnb29nbGUuY29tIiwiaWF0IjoxMiwiZXhwIjoxNjA5MjcyMzEyNTIyLCJ1c2VybmFtZSI6IlRpYWdvTWVuZGVzIiwiZW1haWwiOiJ0ZXRpZ29AZ21haWwuY29tIn0.8SqhyO26FWnLvvwj-9Qv_GcnqEW_EzOuYo4iTe4tsP8
+
+###
+
+POST http://localhost:3000/api/v1/exams HTTP/1.1
+Content-Type: application/json
+
+{
+    "nome": "ultrassom",
+	"tipo": "teste"
+	"labs": 
+		{
+			"nome": "lab01",
+			"endereco": "Rua Primeira",
+			"status": "ativo",
+		}
+	
+}
+
+###
+
+PUT http://localhost:3000/api/v1/news/5fecf511fc789036c457d8d9
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnb29nbGUuY29tIiwiaWF0IjoxMiwiZXhwIjoxNjA5MjcyMzEyNTIyLCJ1c2VybmFtZSI6IlRpYWdvTWVuZGVzIiwiZW1haWwiOiJ0ZXRpZ29AZ21haWwuY29tIn0.8SqhyO26FWnLvvwj-9Qv_GcnqEW_EzOuYo4iTe4tsP8
 Content-Type: application/json
 

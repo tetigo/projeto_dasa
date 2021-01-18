@@ -9,7 +9,10 @@ class ExamsService {
 
     getById(_id: mongoose.Types.ObjectId) {
         return ExamsRepository.findById({ _id });
+    }
 
+    getLabsByExamName(exam_name: string) {
+        return ExamsRepository.findOne({ name: exam_name });
     }
 
     create(exams: IExamsSchema) {

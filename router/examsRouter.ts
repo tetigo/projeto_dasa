@@ -5,6 +5,10 @@ const examsRouter = express.Router()
 
 examsRouter.route('/').get(ExamsController.get);
 examsRouter.route('/:id').get(ExamsController.getById);
+examsRouter.route('/labs/:exam_name').get(ExamsController.getLabsByExamName);
+
+
+
 examsRouter.route('/').post(ExamsController.create);
 examsRouter.route('/:id').put(ExamsController.update);
 examsRouter.route('/:id').delete(ExamsController.delete);

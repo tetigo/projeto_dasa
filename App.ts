@@ -11,11 +11,12 @@ class App {
 
     constructor() {
         this._db = new Database();
-        this._db.createConnection();
+        this._db.connect();
         this.app = express();
         this.middleware();
         this.routes();
     }
+
     enableCors() {
         const options: cors.CorsOptions = {
             methods: 'GET, POST, PUT, DELETE, OPTIONS',
@@ -34,7 +35,7 @@ class App {
         })
 
         //JWT
-        this.app.use(Auth.validate)
+        // this.app.use(Auth.validate)
 
         //newsController
         this.app.use('/api/v1', router)
