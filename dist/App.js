@@ -29,7 +29,7 @@ const router_1 = __importDefault(require("./router"));
 class App {
     constructor() {
         this._db = new db_1.default();
-        this._db.createConnection();
+        this._db.connect();
         this.app = express_1.default();
         this.middleware();
         this.routes();

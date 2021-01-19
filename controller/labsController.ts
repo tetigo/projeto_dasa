@@ -8,35 +8,9 @@ import redis from 'redis';
 
 class LabsController {
     get(req: Request, res: Response) {
-
-
         LabsService.get()
-        .then(labs => {
-            // console.log('mongo')
-            // client.set('labs', JSON.stringify(labs))
-            // client.expire('labs', 60)
-            Helper.sendResponse(res, HttpStatus.OK, labs)
-        })
-        .catch(err => console.error.bind(console, `error: ${err}`));
-
-        // let client = redis.createClient(6379, 'redis')
-
-        // client.get('labs', (err, reply) => {
-        //     if (reply) {
-        //         console.log('redis')
-        //         Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply))
-        //     } else {
-        //         LabsService.get()
-        //             .then(labs => {
-        //                 console.log('mongo')
-        //                 client.set('labs', JSON.stringify(labs))
-        //                 client.expire('labs', 60)
-        //                 Helper.sendResponse(res, HttpStatus.OK, labs)
-        //             })
-        //             .catch(err => console.error.bind(console, `error: ${err}`));
-        //     }
-        // })
-
+            .then(labs => Helper.sendResponse(res, HttpStatus.OK, labs))
+            .catch(err => console.error.bind(console, `error: ${err}`));
     }
     getById(req: Request, res: Response) {
         const _id: mongoose.Types.ObjectId = new mongoose.Types.ObjectId(req.params.id);

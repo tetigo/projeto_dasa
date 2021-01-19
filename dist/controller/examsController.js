@@ -10,29 +10,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 class ExamsController {
     get(req, res) {
         examsService_1.default.get()
-            .then(exams => {
-            // console.log('mongo')
-            // client.set('exams', JSON.stringify(exams))
-            // client.expire('exams', 60)
-            helper_1.default.sendResponse(res, http_status_1.default.OK, exams);
-        })
+            .then(exams => helper_1.default.sendResponse(res, http_status_1.default.OK, exams))
             .catch(err => console.error.bind(console, `error: ${err}`));
-        // let client = redis.createClient(6379, 'redis')
-        // client.get('exams', (err, reply) => {
-        //     if (reply) {
-        //         console.log('redis')
-        //         Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply))
-        //     } else {
-        //         ExamsService.get()
-        //             .then(exams => {
-        //                 console.log('mongo')
-        //                 client.set('exams', JSON.stringify(exams))
-        //                 client.expire('exams', 60)
-        //                 Helper.sendResponse(res, HttpStatus.OK, exams)
-        //             })
-        //             .catch(err => console.error.bind(console, `error: ${err}`));
-        //     }
-        // })
     }
     getById(req, res) {
         console.log('--->>', req.params);

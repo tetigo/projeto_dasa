@@ -20,6 +20,13 @@ class LabsService {
     update(_id, labs) {
         return labsRepository_1.default.findByIdAndUpdate(_id, labs);
     }
+    updateLabExams(lab_id, exam) {
+        return labsRepository_1.default.findByIdAndUpdate(lab_id, {
+            $push: {
+                exams: exam === null || exam === void 0 ? void 0 : exam._id
+            }
+        });
+    }
     delete(_id) {
         return labsRepository_1.default.findByIdAndDelete(_id);
     }

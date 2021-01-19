@@ -8,35 +8,9 @@ import redis from 'redis';
 
 class ExamsController {
     get(req: Request, res: Response) {
-
-
         ExamsService.get()
-        .then(exams => {
-            // console.log('mongo')
-            // client.set('exams', JSON.stringify(exams))
-            // client.expire('exams', 60)
-            Helper.sendResponse(res, HttpStatus.OK, exams)
-        })
-        .catch(err => console.error.bind(console, `error: ${err}`));
-
-        // let client = redis.createClient(6379, 'redis')
-
-        // client.get('exams', (err, reply) => {
-        //     if (reply) {
-        //         console.log('redis')
-        //         Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply))
-        //     } else {
-        //         ExamsService.get()
-        //             .then(exams => {
-        //                 console.log('mongo')
-        //                 client.set('exams', JSON.stringify(exams))
-        //                 client.expire('exams', 60)
-        //                 Helper.sendResponse(res, HttpStatus.OK, exams)
-        //             })
-        //             .catch(err => console.error.bind(console, `error: ${err}`));
-        //     }
-        // })
-
+            .then(exams => Helper.sendResponse(res, HttpStatus.OK, exams))
+            .catch(err => console.error.bind(console, `error: ${err}`));
     }
     getById(req: Request, res: Response) {
         console.log('--->>', req.params)

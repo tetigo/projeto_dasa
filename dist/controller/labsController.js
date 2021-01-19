@@ -10,29 +10,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 class LabsController {
     get(req, res) {
         labsService_1.default.get()
-            .then(labs => {
-            // console.log('mongo')
-            // client.set('labs', JSON.stringify(labs))
-            // client.expire('labs', 60)
-            helper_1.default.sendResponse(res, http_status_1.default.OK, labs);
-        })
+            .then(labs => helper_1.default.sendResponse(res, http_status_1.default.OK, labs))
             .catch(err => console.error.bind(console, `error: ${err}`));
-        // let client = redis.createClient(6379, 'redis')
-        // client.get('labs', (err, reply) => {
-        //     if (reply) {
-        //         console.log('redis')
-        //         Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply))
-        //     } else {
-        //         LabsService.get()
-        //             .then(labs => {
-        //                 console.log('mongo')
-        //                 client.set('labs', JSON.stringify(labs))
-        //                 client.expire('labs', 60)
-        //                 Helper.sendResponse(res, HttpStatus.OK, labs)
-        //             })
-        //             .catch(err => console.error.bind(console, `error: ${err}`));
-        //     }
-        // })
     }
     getById(req, res) {
         const _id = new mongoose_1.default.Types.ObjectId(req.params.id);
